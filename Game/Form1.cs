@@ -7,28 +7,34 @@ namespace Game
     public partial class mainForm : Form
     {
         Random rnd = new Random();
-        static public int NumberOfSCubes = 5;
+        static public int NumberOfSCubes = 6;
         public int Score = 0;
 
         public int[] CubeSpeed = new int[NumberOfSCubes];
         public PictureBox[] Cubes = new PictureBox[NumberOfSCubes];
 
         //The boundaries of the cubes
-        public void CollisionCheck(PictureBox[] Cubes)
-        {
-            for (int i = 0; i < NumberOfSCubes-1; i++)
-            {
-                for (int j = 1; j < NumberOfSCubes; j++)
-                {
-                    if ((Cubes[i].Location.X >= Cubes[j].Location.X && Cubes[i].Location.X <= Cubes[j].Location.X+50) ||
-                        (Cubes[i].Location.X+50 >= Cubes[j].Location.X && Cubes[i].Location.X+50 <= Cubes[j].Location.X + 50))
-                    {
-                        Cubes[i].Dispose();
-                        Cubes[i] = CreatingCubs(i);
-                    }
-                }
-            }
-        }
+        //public int CollisionCheck(int rndNew)
+        //{
+        //    bool flag = true;
+        //    while (flag)
+        //    {
+        //        flag = false;
+        //        for (int i = 0; i < NumberOfSCubes - 1; i++)
+        //        {
+        //            for (int j = 1; j < NumberOfSCubes; j++)
+        //            {
+        //                if ((Cubes[i].Location.X >= Cubes[j].Location.X && Cubes[i].Location.X <= Cubes[j].Location.X + 50) ||
+        //                    (Cubes[i].Location.X + 50 >= Cubes[j].Location.X && Cubes[i].Location.X + 50 <= Cubes[j].Location.X + 50))
+        //                {
+        //                    rndNew = rnd.Next(playground.Left, playground.Right - 50);
+        //                    flag = true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return rndNew;
+        //}
 
         public PictureBox CreatingCubs (int order)
         {
@@ -63,19 +69,16 @@ namespace Game
             {
                 Cubes[i] = CreatingCubs(i);
             }
-            CollisionCheck(Cubes);
         }
 
         private void timer_Tick(object sender, EventArgs e) //Update
         {
             player.Left = Cursor.Position.X - (player.Width / 2); //The movement of the player
 
-            //CollisionCheck(Cubes);
 
             for (int i = 0; i < NumberOfSCubes; i++)
             {
                 Cubes[i].Top += CubeSpeed[i]; //Movement of cubes
-                
 
                 if (Cubes[i].Bottom >= player.Top && Cubes[i].Bottom <= player.Bottom && Cubes[i].Left >= player.Left && Cubes[i].Right <= player.Right)
                 {

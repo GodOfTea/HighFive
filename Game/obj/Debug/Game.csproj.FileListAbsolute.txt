@@ -7,3 +7,12 @@ C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\G
 C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.csproj.GenerateResource.Cache
 C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.exe
 C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.pdb
+C:\GitHub\HighFive\Game\bin\Debug\Game.exe.config
+C:\GitHub\HighFive\Game\obj\Debug\Game.exe
+C:\GitHub\HighFive\Game\obj\Debug\Game.pdb
+C:\GitHub\HighFive\Game\bin\Debug\Game.exe
+C:\GitHub\HighFive\Game\bin\Debug\Game.pdb
+C:\GitHub\HighFive\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\GitHub\HighFive\Game\obj\Debug\Game.mainForm.resources
+C:\GitHub\HighFive\Game\obj\Debug\Game.Properties.Resources.resources
+C:\GitHub\HighFive\Game\obj\Debug\Game.csproj.GenerateResource.Cache
