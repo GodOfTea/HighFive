@@ -1,0 +1,9 @@
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\bin\Debug\Game.exe.config
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\bin\Debug\Game.exe
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\bin\Debug\Game.pdb
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.mainForm.resources
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.csproj.GenerateResource.Cache
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.exe
+C:\Users\Кирилл\Desktop\АНЯ ТУТ ГЛАВНАЯ\Game\Game\obj\Debug\Game.pdb
