@@ -66,6 +66,7 @@
             this.playground.Size = new System.Drawing.Size(784, 562);
             this.playground.TabIndex = 1;
             this.playground.TabStop = false;
+            this.playground.Visible = false;
             // 
             // cube
             // 
@@ -80,9 +81,9 @@
             // score_lable
             // 
             this.score_lable.AutoSize = true;
-            this.score_lable.BackColor = System.Drawing.Color.Black;
+            this.score_lable.BackColor = System.Drawing.SystemColors.Control;
             this.score_lable.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.score_lable.ForeColor = System.Drawing.Color.White;
+            this.score_lable.ForeColor = System.Drawing.Color.Black;
             this.score_lable.Location = new System.Drawing.Point(12, 9);
             this.score_lable.Name = "score_lable";
             this.score_lable.Size = new System.Drawing.Size(116, 42);
@@ -92,9 +93,9 @@
             // points_label
             // 
             this.points_label.AutoSize = true;
-            this.points_label.BackColor = System.Drawing.Color.Black;
+            this.points_label.BackColor = System.Drawing.SystemColors.Control;
             this.points_label.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.points_label.ForeColor = System.Drawing.Color.White;
+            this.points_label.ForeColor = System.Drawing.Color.Black;
             this.points_label.Location = new System.Drawing.Point(134, 9);
             this.points_label.Name = "points_label";
             this.points_label.Size = new System.Drawing.Size(37, 42);
