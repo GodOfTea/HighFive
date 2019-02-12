@@ -16,3 +16,5 @@ C:\GitHub\HighFive\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
 C:\GitHub\HighFive\Game\obj\Debug\Game.mainForm.resources
 C:\GitHub\HighFive\Game\obj\Debug\Game.Properties.Resources.resources
 C:\GitHub\HighFive\Game\obj\Debug\Game.csproj.GenerateResource.Cache
+C:\GitHub\HighFive\Game\bin\Debug\Figure.dll
+C:\GitHub\HighFive\Game\bin\Debug\Figure.pdb
