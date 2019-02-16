@@ -1,71 +1,82 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using System;
 
 namespace Figures
 {
     public abstract class Figure
     {
-        public PictureBox FigurePB;
+        protected PictureBox FigurePB;
         public int Width;
         public int Height;
         public int[] figureColor; //just "Color" is occupied by the built-in method
         public int Position;
 
-        public int Move (int speed)
+        public PictureBox CreatingFigure ()
         {
-            return speed;
+            FigurePB.Width = Width;
+            FigurePB.Height = Height;
+            FigurePB.BackColor = Color.FromArgb( figureColor[0], figureColor[1], figureColor[2]);
+            FigurePB.Top = Position;
+            return FigurePB;
         }
 
-        public PictureBox CreatingFigure (PictureBox figure)
+        public bool CollisionCheckWithPlayer (Cube cube, PictureBox player)
         {
-            figure.Width = Width;
-            figure.Height = Height;
-            figure.BackColor = Color.FromArgb( figureColor[0], figureColor[1], figureColor[2]);
-            figure.Top = Position;
-            return figure;
+            if (cube.FigurePB.Bottom >= player.Top && cube.FigurePB.Bottom <= player.Bottom && cube.FigurePB.Left >= player.Left && cube.FigurePB.Right <= player.Right)
+            { return true; }
+            else
+            { return false; }
+        }
+
+        public bool CollisionCheckWithPlayground(Cube cube, PictureBox playground)
+        {
+            if (cube.FigurePB.Bottom >= playground.Bottom)
+            { return true; }
+            else
+            { return false; }
         }
     }
 
     public class Player : Figure
     {
-        public Player (int playerWidth, int playerHeight, int[] playerColor, int playerPosition)
+        public Player (int playerWidth, int playerHeight, int[] playerColor, PictureBox playground)
         {
+            FigurePB = new PictureBox();
             Width = playerWidth;
             Height = playerHeight;
             figureColor = new int[] { playerColor[0], playerColor[1], playerColor[2] };
-            Position = playerPosition;
+            Position = playground.Bottom - (playground.Bottom / 5);
         }
     }
 
-    public class Cube : Figure
+    public class Cube : Figure, IDisposable
     {
-        public int XLocation;
         public int Speed;
+        public int XLocation;
 
-        public Cube(int cubeWidth, int cubeHeight, int[] cubeColor, int cubePosition)
+        public Cube(int cubeWidth, int cubeHeight, int[] cubeColor, PictureBox playground, int speed, int xLoc)
         {
             FigurePB = new PictureBox();
             Width = cubeWidth;
             Height = cubeHeight;
             figureColor = new int[] { cubeColor[0], cubeColor[1], cubeColor[2] };
-            Position = cubePosition;
+            Position = playground.Top - 30;
+            Speed = speed;
+            XLocation = xLoc;
+            FigurePB.Location = new Point(XLocation, 0);
         }
 
-        public int Spawn (int randomXLocation)
+        public void Move()
         {
-            XLocation = randomXLocation;
-            return XLocation;
+            FigurePB.Top += Speed;
         }
 
-        public int Acceleration(int randomSpeed)
+        public void Dispose()
         {
-            return randomSpeed;
+            FigurePB.Dispose();
         }
 
-        public void Destroy(PictureBox cube)
-        {
-            cube.Dispose();
-            FigurePB = new PictureBox();
-        }
     }
 }

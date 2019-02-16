@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Figures;
+using System.Collections.Generic;
 
 namespace Game
 {
@@ -9,32 +10,11 @@ namespace Game
     {
         static Random rnd = new Random();
 
-        static public int NumberOfSCubes = 6;
+        static public int NumberOfSCubes = 3;
         static public int Score = 0;
 
-        public Cube[] Cubes = new Cube[NumberOfSCubes];
+        public static List<Cube> Cubes = new List<Cube>();
         public Player Player;
-
-        public mainForm()
-        {
-            InitializeComponent();
-            Cursor.Hide();
-            //FullScreen
-            FormBorderStyle = FormBorderStyle.None; 
-            TopMost = true;
-            Bounds = Screen.PrimaryScreen.Bounds;
-
-            Player = new Player(300, 50, playerColorsReturn(), playground.Bottom - (playground.Bottom / 5));
-            for (int i = 0; i < NumberOfSCubes; i++)
-            {
-                Cubes[i] = new Cube(50, 50, cubeColorsReturn(), playground.Top - 30);
-                Cubes[i].Speed = Cubes[i].Acceleration(rnd.Next(4, 12));
-                Cubes[i].FigurePB.Location = new Point(Cubes[i].Spawn(rnd.Next(playground.Left, playground.Right - Cubes[i].Width)), 0);
-                Controls.Add(Cubes[i].CreatingFigure(Cubes[i].FigurePB));
-            }
-
-            Player.CreatingFigure(player);
-        }
 
         static int[] playerColorsReturn()
         {
@@ -48,30 +28,49 @@ namespace Game
             return cubeColors;
         }
 
+        public mainForm()
+        {
+            InitializeComponent();
+            Cursor.Hide();
+            //FullScreen
+            //FormBorderStyle = FormBorderStyle.None; 
+            //TopMost = true;
+            //Bounds = Screen.PrimaryScreen.Bounds;
+
+            Player = new Player(300, 50, playerColorsReturn(), playground);
+            player.Top = Player.Position;
+            for (int i = 0; i < NumberOfSCubes; i++)
+            {
+                Cubes.Add(new Cube(50, 50, cubeColorsReturn(), playground, rnd.Next(4, 12), rnd.Next(playground.Left, playground.Right - 50)));
+                Controls.Add(Cubes[i].CreatingFigure());
+            }
+        }
+
         private void timer_Tick(object sender, EventArgs e) //Update
         {
-            player.Left = Player.Move(Cursor.Position.X - Player.Width / 2); //The movement of the player
 
+            player.Left = Cursor.Position.X - player.Width / 2; //The movement of the player
 
             for (int i = 0; i < NumberOfSCubes; i++)
             {
-                Cubes[i].FigurePB.Top += Cubes[i].Move(Cubes[i].Speed); //Movement of cubes
+                Cubes[i].Move(); //Movement of cubes
 
-                if (Cubes[i].FigurePB.Bottom >= player.Top && Cubes[i].FigurePB.Bottom <= player.Bottom && Cubes[i].FigurePB.Left >= player.Left && Cubes[i].FigurePB.Right <= player.Right)
+                if (Cubes[i].CollisionCheckWithPlayer(Cubes[i], player))
                 {
-                    Cubes[i].Destroy(Cubes[i].FigurePB);
-                    Cubes[i].Speed = Cubes[i].Acceleration(rnd.Next(4, 12));
-                    Cubes[i].FigurePB.Location = new Point(Cubes[i].Spawn(rnd.Next(playground.Left, playground.Right - Cubes[i].Width)), 0);
-                    Controls.Add(Cubes[i].CreatingFigure(Cubes[i].FigurePB));
+                    Cubes[i].Dispose();
+                    Cubes.RemoveAt(i);
+                    Cubes.Insert(i, (new Cube(50, 50, cubeColorsReturn(), playground, rnd.Next(4, 12), rnd.Next(playground.Left, playground.Right - 50))));
+                    Controls.Add(Cubes[i].CreatingFigure());
                     Score += 1;
                     points_label.Text = Score.ToString();
                 }
-                if (Cubes[i].FigurePB.Bottom >= playground.Bottom)
+
+                if (Cubes[i].CollisionCheckWithPlayground(Cubes[i], playground))
                 {
-                    Cubes[i].Destroy(Cubes[i].FigurePB);
-                    Cubes[i].Speed = Cubes[i].Acceleration(rnd.Next(4, 12));
-                    Cubes[i].FigurePB.Location = new Point(Cubes[i].Spawn(rnd.Next(playground.Left, playground.Right - Cubes[i].Width)), 0);
-                    Controls.Add(Cubes[i].CreatingFigure(Cubes[i].FigurePB));
+                    Cubes[i].Dispose();
+                    Cubes.RemoveAt(i);
+                    Cubes.Insert(i, (new Cube(50, 50, cubeColorsReturn(), playground, rnd.Next(4, 12), rnd.Next(playground.Left, playground.Right - 50))));
+                    Controls.Add(Cubes[i].CreatingFigure());
                 }
             }
         }
