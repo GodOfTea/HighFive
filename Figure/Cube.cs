@@ -8,7 +8,6 @@ namespace Figure
     public class Cube : Figure, IDisposable
     {
         public int Speed;
-        public int XLocation;
         private int _score;
 
         public int Score

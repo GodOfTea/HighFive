@@ -13,7 +13,7 @@ namespace Game
     {
         private static readonly XmlSerializer Xs = new XmlSerializer(typeof(List<Cube>));
 
-        public static void WriteToFile(string fileName, Cube dataCube)
+        public static void WriteToFile(string fileName, List<Cube> dataCube)
         {
             using (var fileStream = File.Create(fileName))
             {
@@ -21,17 +21,17 @@ namespace Game
             }
         }
 
-        public static Cube LoadFromFileCube(string fileName)
+        public static List<Cube> LoadFromFileCube(string fileName)
         {
             using (var fileStream = File.OpenRead(fileName))
             {
-                return (Cube) Xs.Deserialize(fileStream);
+                return (List<Cube>) Xs.Deserialize(fileStream);
             }
         }
 
-        public static Cube LoadFromStreamCube(Stream file)
+        public static List<Cube> LoadFromStreamCube(Stream file)
         {
-            return (Cube) Xs.Deserialize(file);
+            return (List<Cube>) Xs.Deserialize(file);
         }
     }
 }
