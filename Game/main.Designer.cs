@@ -1,6 +1,6 @@
 ﻿namespace Game
 {
-    partial class mainForm
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -35,6 +35,8 @@
             this.cube = new System.Windows.Forms.PictureBox();
             this.score_lable = new System.Windows.Forms.Label();
             this.points_label = new System.Windows.Forms.Label();
+            this.save_label = new System.Windows.Forms.Label();
+            this.load_label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.player)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.playground)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cube)).BeginInit();
@@ -102,17 +104,39 @@
             this.points_label.TabIndex = 4;
             this.points_label.Text = "0";
             // 
-            // mainForm
+            // save_label
+            // 
+            this.save_label.AutoSize = true;
+            this.save_label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.save_label.Location = new System.Drawing.Point(12, 63);
+            this.save_label.Name = "save_label";
+            this.save_label.Size = new System.Drawing.Size(106, 19);
+            this.save_label.TabIndex = 5;
+            this.save_label.Text = "Сохранить: F5";
+            // 
+            // load_label
+            // 
+            this.load_label.AutoSize = true;
+            this.load_label.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.load_label.Location = new System.Drawing.Point(12, 84);
+            this.load_label.Name = "load_label";
+            this.load_label.Size = new System.Drawing.Size(98, 19);
+            this.load_label.TabIndex = 6;
+            this.load_label.Text = "Загрузить: F9";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 562);
+            this.Controls.Add(this.load_label);
+            this.Controls.Add(this.save_label);
             this.Controls.Add(this.cube);
             this.Controls.Add(this.points_label);
             this.Controls.Add(this.score_lable);
             this.Controls.Add(this.player);
             this.Controls.Add(this.playground);
-            this.Name = "mainForm";
+            this.Name = "MainForm";
             this.Text = "High Five";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.player)).EndInit();
@@ -131,6 +155,8 @@
         private System.Windows.Forms.PictureBox cube;
         private System.Windows.Forms.Label score_lable;
         private System.Windows.Forms.Label points_label;
+        private System.Windows.Forms.Label save_label;
+        private System.Windows.Forms.Label load_label;
     }
 }
 
